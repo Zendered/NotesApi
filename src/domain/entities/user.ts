@@ -10,7 +10,7 @@ export class User extends Entity<IUserDTO> {
     super(props, id);
   }
 
-  static create(props: IUserDTO, id?: string): User | InvalidEmailError {
+  static create(props: IUserDTO, id?: string): User | Error {
     const emailOrError = EmailValidation(props.email);
     if (!emailOrError) {
       return new InvalidEmailError(props.email);
